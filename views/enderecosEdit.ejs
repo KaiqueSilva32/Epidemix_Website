@@ -1,0 +1,42 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<br><br><br><br><br><br><br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Endereços</h1>
+            <hr>
+        </div>
+        <div class="card-body">
+            <form action="/enderecos/update" method="POST">
+                <label>Logradouro:</label>
+                <input class="form-control" type="text" name="logradouro" id="logradouro" value="<%= enderecos.logradouro %>" required>
+
+                <label>Número:</label>
+                <input class="form-control" type="text" name="numero" id="numero" value="<%= enderecos.numero %>" required>
+
+                <label>Bairro:</label>
+                <input class="form-control" type="text" name="bairro" id="bairro" value="<%= enderecos.bairro %>" required>
+
+                <label>Cidade:</label>
+                <input class="form-control" type="text" name="cidade" id="cidade" value="<%= enderecos.cidade %>" required>
+
+                <label>Estado:</label>
+                <input class="form-control" type="text" name="estado" id="estado" value="<%= enderecos.estado %>" required>
+
+                <label>País:</label>
+                <input class="form-control" type="text" name="pais" id="pais" value="<%= enderecos.pais %>" required>
+
+                <label>CEP:</label>
+                <input class="form-control" type="text" name="cep" id="cep" value="<%= enderecos.cep %>" required>
+                
+                <input type="hidden" name="id" value="<%= enderecos.id %>"
+                <br><br>
+                <input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm ('Confirma as alterações para o endereco?')">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<%- include ('partials/footer.ejs') %>

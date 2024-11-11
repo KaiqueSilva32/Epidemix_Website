@@ -1,32 +1,28 @@
 import express, {Router} from "express";
 const router = express.Router();
 
-import Unidades from "../models/Unidades.js";
+import Usuarios from "../models/Usuarios.js";
 import connection from "../config/sequelize-config.js";
 
 import Auth from "../middleware/Auth.js"
 
 
 
-// ROTA UNIDADES
-router.get("/unidades", Auth, (req, res) => {
-  Unidades.findAll().then((unidades) => {
-    res.render("unidades", {
-      unidades: unidades,
+// ROTA USUARIO
+router.get("/usuarios", Auth, (req, res) => {
+  Unidades.findAll().then((usuarios) => {
+    res.render("usuarios", {
+      usuarios: usuarios,
     });
   });
 });
 
 // Rota de cadastro de unidades
-router.post("/unidades/new", (req, res) => {
-  const unidade = req.body.unidade;
-  const telefone = req.body.telefone;
-  const endereco = req.body.endereco;
+router.post("/usuarios/new", (req, res) => {
+  const tipo_usuario = req.body.tipo_usuario;
   
-  Unidades.create({
-    unidade: unidade,
-    telefone: telefone,
-    endereco: endereco  
+  Usuarios.create({
+    tipo_usuario: tipo_usuario,
   }).then(() => {
     res.redirect("/unidades");
   });
@@ -34,16 +30,16 @@ router.post("/unidades/new", (req, res) => {
 
 // Rota de delete de dados
 // Essa rota possui um parâmetro id
-router.get("/unidades/delete/:id", (req, res) => {
+router.get("/usuarios/delete/:id", (req, res) => {
   const id = req.params.id;
 
-  Unidades.destroy({
+  Usuarios.destroy({
     where: {
       id: id,
     },
   })
     .then(() => {
-      res.redirect("/unidades");
+      res.redirect("/usuarios");
     })
     .catch((error) => {
       console.log(error);
@@ -51,9 +47,9 @@ router.get("/unidades/delete/:id", (req, res) => {
 });
 
 //Rota de edição de unidades
-router.get("/unidades/edit/:id", (req, res) => {
+router.get("/usuarios/edit/:id", (req, res) => {
   const id = req.params.id;
-  Unidades.findByPk(id)
+  Usuarios.findByPk(id)
     .then((unidades) => {
       res.render("unidadesEdit", {
         unidades: unidades,

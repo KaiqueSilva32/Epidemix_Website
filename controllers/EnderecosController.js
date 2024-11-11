@@ -25,6 +25,8 @@ router.post("/enderecos/new", (req, res) => {
   const estado = req.body.estado;
   const pais = req.body.pais;
   const cep = req.body.cep;
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
 
   Enderecos.create({
     logradouro: logradouro,
@@ -34,6 +36,8 @@ router.post("/enderecos/new", (req, res) => {
     estado: estado,
     pais: pais,
     cep: cep,
+    latitude: latitude,
+    longitude: longitude
   }).then(() => {
     res.redirect("/enderecos");
   });
@@ -80,6 +84,8 @@ router.post("/enderecos/update", (req, res) => {
   const estado = req.body.estado;
   const pais = req.body.pais;
   const cep = req.body.cep;
+  const latitude = req.body.latitude;
+  const longitude = req.body.longitude;
 
   Enderecos.update(
     {
@@ -90,6 +96,8 @@ router.post("/enderecos/update", (req, res) => {
     estado: estado,
     pais: pais,
     cep: cep,
+    latitude: latitude,
+    longitude: longitude
     },
     { where:{id: id} },
   )

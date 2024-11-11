@@ -7,13 +7,12 @@
     </div>   
 <% } %>
 <br><br><br><br>
-<div class="container col-4">
-    <div class="card mt-4">
-        <div class="card-header">
-            <h2>Login de administrador</h2>
-        </div>
-        <div class="card-body m-auto">
-            <p style="color: red; font-size: 0.7em;">Você precisa estar logado para acessar os recursos do painel.</p>
+<div class="container col-3">
+    <div class="card mt-3" style="background-color: #cacaca;">
+        <div class="card-body m-auto" style="background-color: #cacaca;">
+            <div>
+                <img src="">
+            </div>
             <form action="/authenticate" method="POST">
                 <label>E-mail:</label>
                 <input type="email" class="form-control" name="email" placeholder="email@exemplo.com" required><br>

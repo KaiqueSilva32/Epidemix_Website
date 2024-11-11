@@ -29,6 +29,12 @@
 
                 <label>CEP:</label>
                 <input type="text" name="cep" id="cep" placeholder="Insira o CEP" class="form-control" required >
+
+                <label>Latitude:</label>
+                <input type="text" name="latitude" id="latitude" placeholder="Insira a Latitude" class="form-control" required >
+
+                <label>Longitude:</label>
+                <input type="text" name="longitude" id="longitude" placeholder="Insira a longitude" class="form-control" required >
                 <br>
                 <input type="submit" class="btn btn-success" value="Cadastrar">
             </form>
@@ -54,6 +60,8 @@
                                 <th>Estado:</th>
                                 <th>País:</th>
                                 <th>CEP:</th>
+                                <th>Latitude:</th>
+                                <th>Longitude:</th>
                                 <th colspan="2">Ações:</th>
                             </tr>
                         </thead>
@@ -81,6 +89,12 @@
                                     </td>
                                     <td class="row-cep">
                                         <%= endereco.cep %>
+                                    </td>
+                                    <td class="row-latitude">
+                                        <%= endereco.latitude %>
+                                    </td>
+                                    <td class="row-longitude">
+                                        <%= endereco.longitude %>
                                     </td>
                                     <td class="row-edit"><a style="color: orange;" href="/enderecos/edit/<%= endereco.id %>">Editar</a></td>
 

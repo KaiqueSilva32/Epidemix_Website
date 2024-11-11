@@ -10,6 +10,10 @@ const Unidades = connection.define("unidades", {
     telefone: {
         type: Sequelize.STRING,
         allowNull: false,
+    },
+    endereco: { // FOREIGN KEY OBRIGATORIAMENTE SENDO INTEGER
+      type: Sequelize.INTEGER,
+      allowNull: false
     }
   });
   Unidades.sync({ force: false });

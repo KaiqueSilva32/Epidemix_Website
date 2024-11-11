@@ -30,6 +30,14 @@ const Enderecos = connection.define("enderecos", {
     type: Sequelize.STRING,
     allowNull: false
   },
+  latitude: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  longitude: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
 });
 Enderecos.sync({ force: false });
 export default Enderecos;

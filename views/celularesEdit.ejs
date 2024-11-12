@@ -1,0 +1,30 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<br><br><br><br><br><br><br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Celular</h1>
+            <hr>
+        </div>
+        <div class="card-body">
+            <form action="/celulares/update" method="POST">
+                <label>Telefone:</label>
+                <input class="form-control" type="text" name="telefone" id="telefone" value="<%= celulares.telefone %>" required>
+
+                <label>Endereço MAC:</label>
+                <input class="form-control" type="text" name="endereco" id="endereco" value="<%= celulares.endereco_mac %>" required>
+
+                <label>Número do Usuário:</label>
+                <input class="form-control" type="text" name="id_usuario" id="id_usuario" value="<%= celulares.id_usuario %>" required>
+                
+                <input type="hidden" name="id" value="<%= celulares.id %>"
+                <br><br>
+                <input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm ('Confirma as alterações para o endereco?')">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<%- include ('partials/footer.ejs') %>

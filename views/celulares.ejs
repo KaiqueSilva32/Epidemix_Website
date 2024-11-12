@@ -1,0 +1,68 @@
+<%- include ('partials/navbar.ejs') %>
+<%- include ('partials/header.ejs') %>
+<br><br>
+<div class="container">
+    <div class="card">
+            <div class="card-header">
+                <h1>Cadastrar Celular</h1>
+            </div>
+    
+        <div class="card-body">
+            <form action="/celulares/new" method="POST">
+                <label>Telefone:</label>
+                <input type="text" name="telefone" id="telefone" placeholder="Insira o telefone" class="form-control" required >
+
+                <label>endereço MAC:</label>
+                <input type="text" name="endereco_mac" id="endereco_mac" placeholder="Insira o Endereço MAC " class="form-control" required >
+
+                <label>Número do Usuário:</label>
+                <input type="text" name="id_usuario" id="id_usuario" placeholder="Insira o número do usuário" class="form-control" required >
+                <br>
+                <input type="submit" class="btn btn-success" value="Cadastrar">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+<br><br>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Celulares</h1>
+                </div>
+                <div class="card-body alinhar">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Telefone:</th>
+                                <th>Endereço MAC:</th>
+                                <th>Número Usuário:</th>
+                                <th colspan="2">Ações:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% celulares.forEach(celular=> { %>
+                                <tr >
+                                    <td><img src="imgs/avatar.png" width="30px"></td>
+                                    <td class="row-telefone">
+                                        <%= celular.telefone %>
+                                    </td>
+                                    <td class="row-endereco_mac">
+                                        <%= celular.endereco_mac %>
+                                    </td>
+                                    <td class="row-telefone">
+                                        <%= celular.id_usuario %>
+                                    </td>
+                                    <td class="row-edit"><a style="color: orange;" href="/celulares/edit/<%= celular.id %>">Editar</a></td>
+
+                                    <td class="row-delete"><a style="color: red;"  href="/celulares/delete/<%= celular.id %>" onclick="return confirm('Deseja realmente deletar o endereço?')">Deletar</a></td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+<%- include ('partials/footer.ejs') %>

@@ -1,0 +1,42 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<br><br><br><br><br><br><br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Usuario</h1>
+            <hr>
+        </div>
+        <div class="card-body">
+            <form action="/usuarios/update" method="POST">
+                <label>Nome:</label>
+                <input class="form-control" type="text" name="nome" id="nome" value="<%= usuarios.nome %>" required>
+
+                <label>E-mail:</label>
+                <input class="form-control" type="text" name="email" id="email" value="<%= usuarios.email %>" required>
+
+                <label>Telefone:</label>
+                <input class="form-control" type="text" name="telefone" id="telefone" value="<%= usuarios.telefone %>" required>
+                
+                <label>CPF:</label>
+                <input class="form-control" type="text" name="cpf" id="cpf" value="<%= usuarios.cpf %>" required>
+
+                <label>Senha:</label>
+                <input class="form-control" type="text" name="senha" id="senha" value="<%= usuarios.senha %>" required>
+
+                <label>Número Tipo de Usuário:</label>
+                <input class="form-control" type="text" name="id_tipo_usuario" id="id_tipo_usuario" value="<%= usuarios.id_tipo_usuario %>" required>
+
+                <label>Número da Unidade:</label>
+                <input class="form-control" type="text" name="id_unidades" id="id_unidades" value="<%= usuarios.id_unidades %>" required>
+
+                <input type="hidden" name="id" value="<%= usuarios.id %>"
+                <br><br>
+                <input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm ('Confirma as alterações para o endereco?')">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<%- include ('partials/footer.ejs') %>

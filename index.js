@@ -7,7 +7,11 @@ import connection from "./config/sequelize-config.js";
 // Importando os Controllers (onde estão as rotas)
 import EnderecosController from "./controllers/EnderecosController.js";
 import UnidadesController from "./controllers/UnidadesController.js";
-import UsersController from "./controllers/UsersController.js"
+import tipoUsuariosController from "./controllers/tipoUsuariosController.js";
+import UsuariosController from "./controllers/UsuariosController.js";
+import CelularesController from "./controllers/CelularesController.js";
+import RegistrosController from "./controllers/RegistrosController.js";
+import UsersController from "./controllers/UsersController.js";
 
 // Importando o gerador de sessões  do express
 import session from "express-session";
@@ -17,6 +21,7 @@ import Auth from "./middleware/Auth.js";
 
 // Importando o express flash
 import flash from "express-flash";
+
 
 // Configurando o express-session
 app.use(
@@ -65,6 +70,10 @@ app.use(express.static("public"));
 // Definindo o uso das rotas dos Controllers
 app.use("/", EnderecosController);
 app.use("/", UnidadesController);
+app.use("/", tipoUsuariosController)
+app.use("/", UsuariosController);
+app.use("/", CelularesController);
+app.use("/", RegistrosController);
 app.use("/", UsersController);
 
 // ROTA PRINCIPAL

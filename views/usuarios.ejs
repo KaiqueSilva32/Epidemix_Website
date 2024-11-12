@@ -1,0 +1,96 @@
+<%- include ('partials/navbar.ejs') %>
+<%- include ('partials/header.ejs') %>
+<br><br>
+<div class="container">
+    <div class="card">
+            <div class="card-header">
+                <h1>Cadastrar Usuario</h1>
+            </div>
+    
+        <div class="card-body">
+            <form action="/usuarios/new" method="POST">
+                <label>Nome:</label>
+                <input type="text" name="nome" id="nome" placeholder="Insira o nome" class="form-control" required >
+
+                <label>E-mail:</label>
+                <input type="text" name="email" id="email" placeholder="Insira o E-mail" class="form-control" required >
+
+                <label>Telefone:</label>
+                <input type="text" name="telefone" id="telefone" placeholder="Insira o Telefone" class="form-control" required >
+
+                <label>CPF:</label>
+                <input type="text" name="cpf" id="cpf" placeholder="Insira o CPF" class="form-control" required >
+
+                <label>Senha:</label>
+                <input type="text" name="senha" id="senha" placeholder="Insira uma Senha" class="form-control" required >
+
+                <label>Número tipo do usuário:</label>
+                <input type="text" name="id_tipo_usuario" id="id_tipo_usuario" placeholder="Insira o numero do tipo do usuário" class="form-control" required >
+
+                <label>Número da unidade:</label>
+                <input type="text" name="id_unidades" id="id_unidades" placeholder="Insira o numero da unidade" class="form-control" required >
+                <br>
+                <input type="submit" class="btn btn-success" value="Cadastrar">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+<br><br>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Usuarios</h1>
+                </div>
+                <div class="card-body alinhar">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Nome:</th>
+                                <th>E-mail:</th>
+                                <th>Telefone:</th>
+                                <th>CPF:</th>
+                                <th>Senha:</th>
+                                <th>Número Tipo Usuário:</th>
+                                <th>Número Unidade:</th>
+                                <th colspan="2">Ações:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% usuarios.forEach(usuario=> { %>
+                                <tr >
+                                    <td><img src="imgs/avatar.png" width="30px"></td>
+                                    <td class="row-nome">
+                                        <%= usuario.nome %>
+                                    </td>
+                                    <td class="row-email">
+                                        <%= usuario.email %>
+                                    </td>
+                                    <td class="row-telefone">
+                                        <%= usuario.telefone %>
+                                    </td>
+                                    <td class="row-cpf">
+                                        <%= usuario.cpf %>
+                                    </td>
+                                    <td class="row-senha">
+                                        <%= usuario.senha %>
+                                    </td>
+                                    <td class="row-id_tipo_usuario">
+                                        <%= usuario.id_tipo_usuario %>
+                                    </td>
+                                    <td class="row-id_unidades">
+                                        <%= usuario.id_unidades %>
+                                    </td>
+                                    <td class="row-edit"><a style="color: orange;" href="/usuarios/edit/<%= usuario.id %>">Editar</a></td>
+
+                                    <td class="row-delete"><a style="color: red;"  href="/usuarios/delete/<%= usuario.id %>" onclick="return confirm('Deseja realmente deletar o endereço?')">Deletar</a></td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+<%- include ('partials/footer.ejs') %>

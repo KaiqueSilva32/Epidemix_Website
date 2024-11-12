@@ -1,0 +1,30 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<br><br><br><br><br><br><br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Unidade</h1>
+            <hr>
+        </div>
+        <div class="card-body">
+            <form action="/unidades/update" method="POST">
+                <label>Unidade:</label>
+                <input class="form-control" type="text" name="unidade" id="unidade" value="<%= unidades.unidade %>" required>
+
+                <label>Telefone:</label>
+                <input class="form-control" type="text" name="telefone" id="telefone" value="<%= unidades.telefone %>" required>
+
+                <label>Endereço:</label>
+                <input class="form-control" type="text" name="endereco" id="endereco" value="<%= unidades.endereco %>" required>
+                
+                <input type="hidden" name="id" value="<%= unidades.id %>"
+                <br><br>
+                <input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm ('Confirma as alterações para o endereco?')">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<%- include ('partials/footer.ejs') %>

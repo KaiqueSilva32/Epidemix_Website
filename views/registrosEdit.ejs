@@ -1,0 +1,36 @@
+<%- include ('partials/header.ejs') %>
+<%- include ('partials/navbar.ejs') %>
+<br><br><br><br><br><br><br>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h1>Editar Registro</h1>
+            <hr>
+        </div>
+        <div class="card-body">
+            <form action="/registros/update" method="POST">
+                <label>Data:</label>
+                <input class="form-control" type="text" name="data" id="data" value="<%= registros.data %>" required>
+
+                <label>Hora:</label>
+                <input class="form-control" type="text" name="hora" id="hora" value="<%= registros.hora %>" required>
+
+                <label>Nível:</label>
+                <input class="form-control" type="text" name="nivel" id="nivel" value="<%= registros.nivel %>" required>
+
+                <label>Número Usuário:</label>
+                <input class="form-control" type="text" name="id_usuario" id="id_usuario" value="<%= registros.id_usuario %>" required>
+
+                <label>Número Endereço:</label>
+                <input class="form-control" type="text" name="id_endereco" id="id_endereco" value="<%= registros.id_endereco %>" required>
+
+                <input type="hidden" name="id" value="<%= registros.id %>"
+                <br><br>
+                <input type="submit" class="btn btn-warning" value="Alterar" onclick="return confirm ('Confirma as alterações para o endereco?')">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<%- include ('partials/footer.ejs') %>

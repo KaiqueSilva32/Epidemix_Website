@@ -8,9 +8,9 @@ import Auth from "../middleware/Auth.js"
 
 
 
-// ROTA USUARIO
+// ROTA UNIDADES
 router.get("/usuarios", Auth, (req, res) => {
-  Unidades.findAll().then((usuarios) => {
+  Usuarios.findAll().then((usuarios) => {
     res.render("usuarios", {
       usuarios: usuarios,
     });
@@ -19,12 +19,25 @@ router.get("/usuarios", Auth, (req, res) => {
 
 // Rota de cadastro de unidades
 router.post("/usuarios/new", (req, res) => {
-  const tipo_usuario = req.body.tipo_usuario;
+  const nome = req.body.nome;
+  const email = req.body.email;
+  const telefone = req.body.telefone;
+  const cpf = req.body.cpf;
+  const senha = req.body.senha;
+  const id_tipo_usuario = req.body.id_tipo_usuario;
+  const id_unidades = req.body.id_unidades;
   
   Usuarios.create({
-    tipo_usuario: tipo_usuario,
+    nome: nome,
+    email:email,
+    telefone: telefone,
+    cpf: cpf,
+    senha: senha,
+    id_tipo_usuario: id_tipo_usuario,
+    id_unidades: id_unidades
+
   }).then(() => {
-    res.redirect("/unidades");
+    res.redirect("/usuarios");
   });
 });
 
@@ -50,9 +63,9 @@ router.get("/usuarios/delete/:id", (req, res) => {
 router.get("/usuarios/edit/:id", (req, res) => {
   const id = req.params.id;
   Usuarios.findByPk(id)
-    .then((unidades) => {
-      res.render("unidadesEdit", {
-        unidades: unidades,
+    .then((usuarios) => {
+      res.render("usuariosEdit", {
+        usuarios: usuarios,
       });
     })
     .catch((error) => {
@@ -60,22 +73,30 @@ router.get("/usuarios/edit/:id", (req, res) => {
     });
 });
 
-router.post("/unidades/update", (req, res) => {
+router.post("/usuarios/update", (req, res) => {
   const id = req.body.id;
-  const unidade = req.body.unidade;
+  const nome = req.body.nome;
+  const email = req.body.email;
   const telefone = req.body.telefone;
-  const endereco = req.body.endereco;
+  const cpf = req.body.cpf;
+  const senha = req.body.senha;
+  const id_tipo_usuario = req.body.id_tipo_usuario;
+  const id_unidades = req.body.id_unidades;
 
-  Unidades.update(
+  Usuarios.update(
     {
-    unidade: unidade,
-    telefone: telefone,
-    endereco: endereco
+        nome: nome,
+        email:email,
+        telefone: telefone,
+        cof: cpf,
+        senha: senha,
+        id_tipo_usuario: id_tipo_usuario,
+        id_unidades: id_unidades
     },
     { where:{id: id} },
   )
     .then(() => {
-      res.redirect("/unidades");
+      res.redirect("/usuarios");
     })
     .catch((error) => {
       console.log(error);

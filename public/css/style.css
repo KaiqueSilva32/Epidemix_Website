@@ -2,11 +2,52 @@
 
 main {
     height: 600px;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 body {
     background: linear-gradient(45deg, #1e1e1e, #2b2a2a);
+}
+
+.full-login {
+    background: linear-gradient( to bottom, #B00D0D, #440505);
+}
+
+#logo_login {
+    margin-left: 39px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 145px;
+    width: 155px;
+}
+
+.btn_login {
+    width: 250px;
+    height: 35px;
+    background-color: #4CAF50;
+    border-radius: 0;
+    border: none;
+    color: #FFF;
+}
+
+.btn_login:hover {
+    background-color: #39833b;
+}
+
+.mapBox {
+    position: relative;
+    width: 800px;
+    height: 700px;
+    margin-top: 300px;
+    margin-left: 20px;
+    background-color: #FFF;
+}
+
+.mapBox iframe {
+    width: 100%;
+    height: 100%;
 }
 
 .alinhar {

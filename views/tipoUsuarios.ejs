@@ -1,0 +1,55 @@
+<%- include ('partials/navbar.ejs') %>
+<%- include ('partials/header.ejs') %>
+<br><br>
+<div class="container">
+    <div class="card">
+            <div class="card-header">
+                <h1>Cadastrar Tipo de usuario</h1>
+            </div>
+    
+        <div class="card-body">
+            <form action="/tipoUsuarios/new" method="POST">
+                <label>Tipo Usuario:</label>
+                <input type="text" name="tipo_usuario" id="tipo_usuario" placeholder="Insira o Tipo de Usuário" class="form-control" required >
+
+                <br>
+                <input type="submit" class="btn btn-success" value="Cadastrar">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+<br><br>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Usuario</h1>
+                </div>
+                <div class="card-body alinhar">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Tipo Usuario:</th>
+                                <th colspan="2">Ações:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% tipoUsuarios.forEach(usuario=> { %>
+                                <tr >
+                                    <td><img src="imgs/avatar.png" width="30px"></td>
+                                    <td class="row-tipo_usuario">
+                                        <%= usuario.tipo_usuario %>
+                                    </td>
+                                    <td class="row-edit"><a style="color: orange;" href="/tipoUsuarios/edit/<%= usuario.id %>">Editar</a></td>
+
+                                    <td class="row-delete"><a style="color: red;"  href="/tipoUsuarios/delete/<%= usuario.id %>" onclick="return confirm('Deseja realmente deletar o endereço?')">Deletar</a></td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+<%- include ('partials/footer.ejs') %>

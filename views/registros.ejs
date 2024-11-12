@@ -1,0 +1,84 @@
+<%- include ('partials/navbar.ejs') %>
+<%- include ('partials/header.ejs') %>
+<br><br>
+<div class="container">
+    <div class="card">
+            <div class="card-header">
+                <h1>Cadastrar Registro</h1>
+            </div>
+    
+        <div class="card-body">
+            <form action="/registros/new" method="POST">
+                <label>Data:</label>
+                <input type="datetime-local" name="data" id="data" placeholder="Insira a Data" class="form-control" required >
+
+                <label>Hora:</label>
+                <input type="time" name="hora" id="hora" placeholder="Insira a Hora" class="form-control" required >
+
+                <label>Nivel:</label>
+                <input type="text" name="nivel" id="nivel" placeholder="Insira o Nivel" class="form-control" required >
+
+                <label>Número Usuário:</label>
+                <input type="text" name="id_usuario" id="id_usuario" placeholder="Insira o Número do Usuário" class="form-control" required >
+
+                <label>Número Endereço:</label>
+                <input type="text" name="id_endereco" id="id_endereco" placeholder="Insira o Número do Endereço" class="form-control" required >
+
+                <br>
+                <input type="submit" class="btn btn-success" value="Cadastrar">
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+<br><br>
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Registros</h1>
+                </div>
+                <div class="card-body alinhar">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Data:</th>
+                                <th>Hora:</th>
+                                <th>Nível:</th>
+                                <th>Número Usuário:</th>
+                                <th>Número Endereço:</th>
+                                <th colspan="2">Ações:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% registros.forEach(registro=> { %>
+                                <tr >
+                                    <td><img src="imgs/avatar.png" width="30px"></td>
+                                    <td class="row-data">
+                                        <%= registro.data %>
+                                    </td>
+                                    <td class="row-hora">
+                                        <%= registro.hora %>
+                                    </td>
+                                    <td class="row-nivel">
+                                        <%= registro.nivel %>
+                                    </td>
+                                    <td class="row-id_usuario">
+                                        <%= registro.id_usuario %>
+                                    </td>
+                                    <td class="row-id_endereco">
+                                        <%= registro.id_endereco %>
+                                    </td>
+
+                                    <td class="row-edit"><a style="color: orange;" href="/registros/edit/<%= registro.id %>">Editar</a></td>
+
+                                    <td class="row-delete"><a style="color: red;"  href="/registros/delete/<%= registro.id %>" onclick="return confirm('Deseja realmente deletar o endereço?')">Deletar</a></td>
+                                </tr>
+                                <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+<%- include ('partials/footer.ejs') %>

@@ -132,6 +132,49 @@
     }
 }
 
+.epidemix-animacao-full {
+    width: 40vw;
+}
+
+@media only screen and (max-width: 1621px) {
+    .main-login {
+        justify-content: center;
+    }
+
+    .left-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .right-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .epidemix-animacao-full {
+        width: 130vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .main-login {
+        flex-direction: column;
+    }
+
+    .left-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .right-login {
+        width: 100%;
+        height: auto;
+    }
+
+    .epidemix-animacao-full {
+        width: 130vw;
+    }
+}
 
 
 
@@ -153,7 +196,6 @@ body {
 .nav-index {
     width: 1903px;
     height: 150px;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -372,4 +414,12 @@ body {
     position: absolute;
     bottom: 30px;
     width: 100%;
+}
+
+.cadastro-txt {
+    color: #FFF;
+}
+
+.txt-possui-conta {
+    color: #000;
 }

@@ -9,6 +9,9 @@ main {
 
 body {
     background: linear-gradient(45deg, #1e1e1e, #2b2a2a);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .full-login {
@@ -82,8 +85,6 @@ body {
 }
 
 
-
-
 .row-numero-ped {
     padding-left: 40px;
     padding-right: 40px;
@@ -94,9 +95,79 @@ body {
     padding-right: 10px;
 }
 
-
-
 .row-categ {
     padding-left: 25px;
     padding-right: 25px;
 }
+
+nav.menu-lateral {
+    width: 90px;
+    height: 100%;
+    background-color: #202020;
+    padding: 40px 0 40px 0;
+    box-shadow: 3px 0 0 #FFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: .2s;
+}
+
+nav.menu-lateral.expandir {
+    width: 300px;
+}
+
+.btn-expandir {
+    width: 100%;
+    padding-left:20px ;
+}
+
+.btn-expandir > i {
+    color: #FFF;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+ul {
+    height: 100%;
+    list-style-type: none;
+}
+
+ul li.item-menu {
+    transition: .2s;
+}
+
+ul li.ativo {
+    background-color: #B00D0D;
+}
+
+ul li.item-menu:hover {
+    background-color: #B00D0D;
+}
+
+ul li.item-menu a {
+    color: #FFF;
+    text-decoration: none;
+    font-size: 20px;
+    padding-top: 20px;
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 40px;
+}
+
+ul li.item-menu a .txt-link {
+    margin-left: 70px;
+    transition: .5s;
+    opacity: 0;
+}
+
+nav.menu-lateral.expandir .txt-link {
+    margin-left: 40px;
+    opacity: 1;
+
+}
+
+ul li.item-menu a .icon > i {
+    font-size: 30px;
+}
+

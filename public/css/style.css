@@ -18,10 +18,15 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-right: 5px;
 }
 
 .left-login > h1 {
     color: #ffffff;
+    margin-left: 50px;
 }
 
 .right-login {
@@ -101,15 +106,32 @@
 .logo-ani {
     width: 600px;
     height: 600px;
+    margin-left: 200px;
 }
 
-.epidemix-animacao-full .seta {
+.seta {
     position: absolute;
-    width: 80px;
-    height: 80px;
-    margin-top: 233px;
-    margin-left: 440px;
+    width: 160px;
+    height: 160px;
+    margin-top: 220px;
+    margin-left: 640px;
+    transform: translateY(-0%) rotate(0deg);
+    animation: 5s radarAnim;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-origin:center ;
+    z-index: 1;
 }
+
+@keyframes radarAnim {
+    from {
+        transform: translateY(-0%) rotate(0deg);
+    }
+    to {
+        transform: translateY(-0%) rotate(360deg);
+    }
+}
+
 
 
 
@@ -130,8 +152,8 @@ body {
 
 .nav-index {
     width: 1903px;
-    height: 200px;
-    background: linear-gradient(to left, #b00d0d9f, #440505ad);
+    height: 150px;
+
     display: flex;
     justify-content: center;
     align-items: center;

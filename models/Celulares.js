@@ -17,5 +17,6 @@ const Celulares = connection.define("celulares", {
     }
   });
   Celulares.sync({ force: false });
-  export default Celulares;
+
+    export default Celulares;
   

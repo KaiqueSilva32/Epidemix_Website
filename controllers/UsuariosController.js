@@ -9,12 +9,53 @@ import Auth from "../middleware/Auth.js"
 
 
 // ROTA UNIDADES
-router.get("/usuarios", Auth, (req, res) => {
-  Usuarios.findAll().then((usuarios) => {
+router.get("/usuarios", Auth, async (req, res) => {
+  try {
+    // Conta o número total de registros na tabela Usuarios
+    const totalUsuarios = await Usuarios.count();
+
+    // Busca todos os registros na tabela Usuarios
+    const usuarios = await Usuarios.findAll();
+
+/* 1) definir uma variavel pivot que sera organizado pela pos do ultimo elemento
+quick
+2) percorrer o arrray com um for(i=0;i<= total-1; i++){}
+3) usuario[i].id
+4)if( usuario[i].id < pivot;){
+/////////
+
+key - campo id
+function quickSort(arr, key) {
+  if (arr.length <= 1) return arr;
+
+  const pivot = arr[arr.length - 1];
+  const left = [];
+  const right = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i][key] < pivot[key]) {
+      left.push(arr[i]);
+    } else {
+      right.push(arr[i]);
+    }
+  }
+
+  return [quickSort(left, key), pivot,quickSort(right, key)];
+}
+const sortedData = quickSort(data, 'name'); // Ordena por nome, mas pode mudar para outra chave
+  res.render('index', { data: sortedData });
+} 
+*/
+
+    // Renderiza a página "usuarios" com a lista de usuários e o tamanho total
     res.render("usuarios", {
       usuarios: usuarios,
+      totalUsuarios: totalUsuarios,  // Envia a contagem total para a view
     });
-  });
+  } catch (error) {
+    console.error("Erro ao buscar usuários:", error);
+    res.status(500).send("Erro ao buscar usuários");
+  }
 });
 
 // Rota de cadastro de unidades

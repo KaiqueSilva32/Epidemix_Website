@@ -15,7 +15,7 @@
         <div class="card-body">
             <form action="/registros/new" method="POST">
                 <label>Data:</label>
-                <input type="datetime-local" name="data" id="data" placeholder="Insira a Data" class="form-control" required >
+                <input type="date" name="data" id="data" placeholder="Insira a Data" class="form-control" required >
 
                 <label>Hora:</label>
                 <input type="time" name="hora" id="hora" placeholder="Insira a Hora" class="form-control" required >
@@ -47,31 +47,31 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Data:</th>
-                                <th>Hora:</th>
-                                <th>Nível:</th>
-                                <th>Número Usuário:</th>
-                                <th>Número Endereço:</th>
-                                <th colspan="2">Ações:</th>
+                                <th style="padding-right: 100px;">Data:</th>
+                                <th style="padding-right: 100px;">Hora:</th>
+                                <th style="padding-right: 100px;">Nível:</th>
+                                <th style="padding-right: 100px;">Número Usuário:</th>
+                                <th style="padding-right: 100px;">Número Endereço:</th>
+                                <th colspan="2" style="padding-right: 100px;">Ações:</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <% registros.forEach(registro=> { %>
+                            <% regs.forEach(registro=> { %>
                                 <tr >
                                     <td><img src="imgs/avatar.png" width="30px"></td>
                                     <td class="row-data">
-                                        <%= registro.data %>
+                                        <%= registro.data.getDate()%>/<%= registro.data.getMonth()+1%>/<%= registro.data.getFullYear()%> %>
                                     </td>
                                     <td class="row-hora">
                                         <%= registro.hora %>
                                     </td>
-                                    <td class="row-nivel">
+                                    <td class="row-nivel" style="padding-left: 15px;">
                                         <%= registro.nivel %>
                                     </td>
-                                    <td class="row-id_usuario">
+                                    <td class="row-id_usuario" style="padding-left: 40px;">
                                         <%= registro.id_usuario %>
                                     </td>
-                                    <td class="row-id_endereco">
+                                    <td class="row-id_endereco" style="padding-left: 40px;">
                                         <%= registro.id_endereco %>
                                     </td>
 

@@ -9,10 +9,18 @@ import Auth from "../middleware/Auth.js"
 
 
 // ROTA UNIDADES
+import RegistrosFactory from "../factories/RegistrosFactory.js";
+
+// ROTA UNIDADES
 router.get("/registros", Auth, (req, res) => {
   Registros.findAll().then((registros) => {
+    const regs = [];
+
+    registros.forEach((reg) => {
+      regs.push(RegistrosFactory.Build(reg));
+    });
     res.render("registros", {
-      registros:registros,
+      regs: regs,
     });
   });
 });

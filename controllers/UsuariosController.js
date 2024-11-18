@@ -7,8 +7,9 @@ import connection from "../config/sequelize-config.js";
 import Auth from "../middleware/Auth.js"
 
 
-
 // ROTA UNIDADES
+
+// Rota para exibir os usuários
 router.get("/usuarios", Auth, async (req, res) => {
   try {
     // Conta o número total de registros na tabela Usuarios
@@ -17,39 +18,32 @@ router.get("/usuarios", Auth, async (req, res) => {
     // Busca todos os registros na tabela Usuarios
     const usuarios = await Usuarios.findAll();
 
-/* 1) definir uma variavel pivot que sera organizado pela pos do ultimo elemento
-quick
-2) percorrer o arrray com um for(i=0;i<= total-1; i++){}
-3) usuario[i].id
-4)if( usuario[i].id < pivot;){
-/////////
+    // Função de ordenação quickSort
+    function quickSort(arr, key) {
+      if (arr.length <= 1) return arr;
 
-key - campo id
-function quickSort(arr, key) {
-  if (arr.length <= 1) return arr;
+      const pivot = arr[arr.length - 1];
+      const left = [];
+      const right = [];
 
-  const pivot = arr[arr.length - 1];
-  const left = [];
-  const right = [];
+      for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i][key] < pivot[key]) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
+        }
+      }
 
-  for (let i = 0; i < arr.length - 1; i++) {
-    if (arr[i][key] < pivot[key]) {
-      left.push(arr[i]);
-    } else {
-      right.push(arr[i]);
+      // A função precisa retornar um único array, sem arrays aninhados
+      return [...quickSort(left, key), pivot, ...quickSort(right, key)];
     }
-  }
 
-  return [quickSort(left, key), pivot,quickSort(right, key)];
-}
-const sortedData = quickSort(data, 'name'); // Ordena por nome, mas pode mudar para outra chave
-  res.render('index', { data: sortedData });
-} 
-*/
+    // Ordena os usuários por 'name' (você pode mudar a chave de acordo com sua necessidade)
+    const sortedUsuarios = quickSort(usuarios, 'name');
 
     // Renderiza a página "usuarios" com a lista de usuários e o tamanho total
     res.render("usuarios", {
-      usuarios: usuarios,
+      usuarios: sortedUsuarios,   // Envia os usuários ordenados para a view
       totalUsuarios: totalUsuarios,  // Envia a contagem total para a view
     });
   } catch (error) {
@@ -57,6 +51,9 @@ const sortedData = quickSort(data, 'name'); // Ordena por nome, mas pode mudar p
     res.status(500).send("Erro ao buscar usuários");
   }
 });
+
+
+
 
 // Rota de cadastro de unidades
 router.post("/usuarios/new", (req, res) => {

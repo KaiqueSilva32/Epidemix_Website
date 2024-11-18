@@ -40,9 +40,9 @@
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Telefone:</th>
-                                <th>Endereço MAC:</th>
-                                <th>Número Usuário:</th>
+                                <th style="padding-right: 100px;">Telefone:</th>
+                                <th style="padding-right: 100px;">Endereço MAC:</th>
+                                <th style="padding-right: 100px;">Número Usuário:</th>
                                 <th colspan="2">Ações:</th>
                             </tr>
                         </thead>
@@ -56,7 +56,7 @@
                                     <td class="row-endereco_mac">
                                         <%= celular.endereco_mac %>
                                     </td>
-                                    <td class="row-telefone">
+                                    <td class="row-id_usuario " style="padding-left: 40px;">
                                         <%= celular.id_usuario %>
                                     </td>
                                     <td class="row-edit"><a style="color: orange;" href="/celulares/edit/<%= celular.id %>">Editar</a></td>
